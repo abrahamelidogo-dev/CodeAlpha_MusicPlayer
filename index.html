@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -10,91 +9,51 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>CodeAlpha Music Player</title>
+    <title>ABRAHAM ELI MUSIC PLAYER</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-    <!-- =================================
-         MUSIC PLAYER
-    ================================== -->
-
     <main class="music-player">
 
-
-        <!-- =================================
-             HEADER
-        ================================== -->
-
+        <!-- Header -->
         <header class="player-header">
-
             <h1>Abraham Eli Music Player</h1>
-
             <p>Enjoy your favourite music</p>
-
         </header>
 
 
-        <!-- =================================
-             ALBUM COVER
-        ================================== -->
-
+        <!-- Album Cover -->
         <div class="album-container">
-
             <img
                 id="albumCover"
-                src="cover1.jpeg"
-                alt="Album Cover"
+                src="dreams.jpeg"
+                alt="Dreams Album Cover"
             >
-
         </div>
 
 
-        <!-- =================================
-             SONG INFORMATION
-        ================================== -->
-
+        <!-- Song Information -->
         <section class="song-info">
-
-            <h2 id="songTitle">
-                Dreams
-            </h2>
-
-            <p id="artistName">
-                Benjamin Scott
-            </p>
-
+            <h2 id="songTitle">Dreams</h2>
+            <p id="artistName">Benjamin Scott</p>
         </section>
 
 
-        <!-- =================================
-             AUDIO ELEMENTS
-             3 SONGS
-        ================================== -->
-
+        <!-- Audio Files -->
         <div class="audio-files">
-
-            <!-- SONG 1 -->
 
             <audio
                 id="audioPlayer1"
                 src="bensound-dreams.mp3"
             ></audio>
 
-
-            <!-- SONG 2 -->
-
             <audio
                 id="audioPlayer2"
                 src="bensound-memories.mp3"
             ></audio>
-
-
-            <!-- SONG 3 -->
 
             <audio
                 id="audioPlayer3"
@@ -104,15 +63,10 @@
         </div>
 
 
-        <!-- =================================
-             PROGRESS AREA
-        ================================== -->
-
+        <!-- Progress Bar -->
         <div class="progress-container">
 
-            <span id="currentTime">
-                0:00
-            </span>
+            <span id="currentTime">0:00</span>
 
             <input
                 type="range"
@@ -122,21 +76,13 @@
                 value="0"
             >
 
-            <span id="duration">
-                0:00
-            </span>
+            <span id="duration">0:00</span>
 
         </div>
 
 
-        <!-- =================================
-             PLAYER CONTROLS
-        ================================== -->
-
+        <!-- Controls -->
         <div class="controls">
-
-
-            <!-- PREVIOUS -->
 
             <button
                 id="previousBtn"
@@ -146,9 +92,6 @@
                 ⏮
             </button>
 
-
-            <!-- PLAY / PAUSE -->
-
             <button
                 id="playBtn"
                 class="control-btn play-btn"
@@ -156,9 +99,6 @@
             >
                 ▶
             </button>
-
-
-            <!-- NEXT -->
 
             <button
                 id="nextBtn"
@@ -171,10 +111,7 @@
         </div>
 
 
-        <!-- =================================
-             VOLUME CONTROL
-        ================================== -->
-
+        <!-- Volume -->
         <div class="volume-container">
 
             <span>🔊</span>
@@ -191,27 +128,17 @@
         </div>
 
 
-        <!-- =================================
-             PLAYLIST
-        ================================== -->
-
+        <!-- Playlist -->
         <section class="playlist">
 
-
             <div class="playlist-header">
-
                 <h2>Playlist</h2>
-
             </div>
 
 
             <div id="playlistItems">
 
-
-                <!-- =================================
-                     SONG 1
-                ================================== -->
-
+                <!-- Song 1 -->
                 <div
                     class="playlist-item"
                     data-song="1"
@@ -234,10 +161,7 @@
                 </div>
 
 
-                <!-- =================================
-                     SONG 2
-                ================================== -->
-
+                <!-- Song 2 -->
                 <div
                     class="playlist-item"
                     data-song="2"
@@ -260,10 +184,7 @@
                 </div>
 
 
-                <!-- =================================
-                     SONG 3
-                ================================== -->
-
+                <!-- Song 3 -->
                 <div
                     class="playlist-item"
                     data-song="3"
@@ -285,16 +206,12 @@
 
                 </div>
 
-
             </div>
 
         </section>
 
 
-        <!-- =================================
-             AUTOPLAY
-        ================================== -->
-
+        <!-- Autoplay -->
         <div class="autoplay-container">
 
             <label>
@@ -310,16 +227,11 @@
 
         </div>
 
-
     </main>
 
 
-    <!-- =================================
-         JAVASCRIPT
-    ================================== -->
-
+    <!-- JavaScript -->
     <script src="script.js"></script>
-
 
 </body>
 
