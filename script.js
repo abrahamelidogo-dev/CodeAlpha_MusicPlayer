@@ -1,5 +1,5 @@
 // ========================================
-// CODEALPHA MUSIC PLAYER
+// ABRAHAM ELI MUSIC PLAYER
 // CORRECTED JAVASCRIPT
 // ========================================
 
@@ -8,84 +8,56 @@
 // GET HTML ELEMENTS
 // ========================================
 
-const audioPlayer1 =
-    document.getElementById("audioPlayer1");
+const audioPlayer1 = document.getElementById("audioPlayer1");
+const audioPlayer2 = document.getElementById("audioPlayer2");
+const audioPlayer3 = document.getElementById("audioPlayer3");
 
-const audioPlayer2 =
-    document.getElementById("audioPlayer2");
+const albumCover = document.getElementById("albumCover");
+const songTitle = document.getElementById("songTitle");
+const artistName = document.getElementById("artistName");
 
-const audioPlayer3 =
-    document.getElementById("audioPlayer3");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+const progressBar = document.getElementById("progressBar");
 
+const volumeBar = document.getElementById("volumeBar");
 
-const albumCover =
-    document.getElementById("albumCover");
+const playBtn = document.getElementById("playBtn");
+const previousBtn = document.getElementById("previousBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-const songTitle =
-    document.getElementById("songTitle");
+const playlistItems = document.getElementById("playlistItems");
+const autoplayToggle = document.getElementById("autoplayToggle");
 
-const artistName =
-    document.getElementById("artistName");
-
-const currentTime =
-    document.getElementById("currentTime");
-
-const duration =
-    document.getElementById("duration");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const volumeBar =
-    document.getElementById("volumeBar");
-
-const playBtn =
-    document.getElementById("playBtn");
-
-const previousBtn =
-    document.getElementById("previousBtn");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const playlistItems =
-    document.getElementById("playlistItems");
-
-const autoplayToggle =
-    document.getElementById("autoplayToggle");
-
-const musicPlayer =
-    document.querySelector(".music-player");
+const musicPlayer = document.querySelector(".music-player");
 
 
 // ========================================
 // SONG DATA
+// ORDER: SUNNY → DREAMS → MEMORIES
 // ========================================
 
 const songs = [
 
     {
-        title: "Dreams",
+        title: "Sunny",
         artist: "Benjamin Scott",
         audio: audioPlayer1,
-        src: "bensound-dreams.mp3",
-        cover: "Dreams.jpeg"
+        cover: "sunny.jpeg"
+    },
+
+    {
+        title: "Dreams",
+        artist: "Benjamin Scott",
+        audio: audioPlayer2,
+        cover: "dreams.jpeg"
     },
 
     {
         title: "Memories",
         artist: "Benjamin Scott",
-        audio: audioPlayer2,
-        src: "bensound-memories.mp3",
-        cover: "memories.jpeg"
-    },
-
-    {
-        title: "Sunny",
-        artist: "Benjamin Scott",
         audio: audioPlayer3,
-        src: "bensound-sunny.mp3",
-        cover: "sunny.jpeg"
+        cover: "memories.jpeg"
     }
 
 ];
@@ -97,8 +69,7 @@ const songs = [
 
 let songIndex = 0;
 
-let audioPlayer =
-    songs[songIndex].audio;
+let audioPlayer = songs[songIndex].audio;
 
 
 // ========================================
@@ -109,8 +80,7 @@ songs.forEach((song) => {
 
     song.audio.preload = "metadata";
 
-    song.audio.volume =
-        Number(volumeBar.value);
+    song.audio.volume = Number(volumeBar.value);
 
 });
 
@@ -125,56 +95,46 @@ function loadSong(index) {
 
 
     // Stop all audio
-
     songs.forEach((item) => {
 
         item.audio.pause();
 
+        item.audio.currentTime = 0;
+
     });
 
 
-    audioPlayer =
-        song.audio;
+    // Set current audio
+    audioPlayer = song.audio;
 
 
     // Update song title
-
-    songTitle.textContent =
-        song.title;
+    songTitle.textContent = song.title;
 
 
     // Update artist
-
-    artistName.textContent =
-        song.artist;
+    artistName.textContent = song.artist;
 
 
     // Update album cover
+    albumCover.src = song.cover;
 
-    albumCover.src =
-        song.cover;
-
-
-    albumCover.alt =
-        `${song.title} album cover`;
+    albumCover.alt = `${song.title} album cover`;
 
 
     // Reset progress
+    currentTime.textContent = "0:00";
 
-    currentTime.textContent =
-        "0:00";
-
-    duration.textContent =
-        "0:00";
+    duration.textContent = "0:00";
 
     progressBar.value = 0;
 
 
     // Load selected audio
-
     audioPlayer.load();
 
 
+    // Update playlist
     updatePlaylist();
 
 }
@@ -187,23 +147,20 @@ function loadSong(index) {
 function playSong() {
 
     audioPlayer.play()
+
         .then(() => {
 
-            playBtn.textContent =
-                "⏸";
-
+            playBtn.textContent = "⏸";
 
             playBtn.setAttribute(
                 "aria-label",
                 "Pause"
             );
 
-
-            musicPlayer.classList.add(
-                "playing"
-            );
+            musicPlayer.classList.add("playing");
 
         })
+
         .catch((error) => {
 
             console.log(
@@ -224,20 +181,14 @@ function pauseSong() {
 
     audioPlayer.pause();
 
-
-    playBtn.textContent =
-        "▶";
-
+    playBtn.textContent = "▶";
 
     playBtn.setAttribute(
         "aria-label",
         "Play"
     );
 
-
-    musicPlayer.classList.remove(
-        "playing"
-    );
+    musicPlayer.classList.remove("playing");
 
 }
 
@@ -269,13 +220,11 @@ function nextSong() {
 
     songIndex++;
 
-
     if (songIndex >= songs.length) {
 
         songIndex = 0;
 
     }
-
 
     loadSong(songIndex);
 
@@ -292,14 +241,11 @@ function previousSong() {
 
     songIndex--;
 
-
     if (songIndex < 0) {
 
-        songIndex =
-            songs.length - 1;
+        songIndex = songs.length - 1;
 
     }
-
 
     loadSong(songIndex);
 
@@ -320,14 +266,9 @@ function formatTime(time) {
 
     }
 
+    const minutes = Math.floor(time / 60);
 
-    const minutes =
-        Math.floor(time / 60);
-
-
-    const seconds =
-        Math.floor(time % 60);
-
+    const seconds = Math.floor(time % 60);
 
     return `${minutes}:${seconds
         .toString()
@@ -348,20 +289,14 @@ function updateProgress() {
 
     }
 
-
     const progress =
         (audioPlayer.currentTime /
             audioPlayer.duration) * 100;
 
-
-    progressBar.value =
-        progress;
-
+    progressBar.value = progress;
 
     currentTime.textContent =
-        formatTime(
-            audioPlayer.currentTime
-        );
+        formatTime(audioPlayer.currentTime);
 
 }
 
@@ -373,9 +308,7 @@ function updateProgress() {
 function setDuration() {
 
     duration.textContent =
-        formatTime(
-            audioPlayer.duration
-        );
+        formatTime(audioPlayer.duration);
 
 }
 
@@ -392,14 +325,11 @@ function seekSong() {
 
     }
 
-
     const seekTime =
         (progressBar.value / 100) *
         audioPlayer.duration;
 
-
-    audioPlayer.currentTime =
-        seekTime;
+    audioPlayer.currentTime = seekTime;
 
 }
 
@@ -413,11 +343,9 @@ function changeVolume() {
     const volume =
         Number(volumeBar.value);
 
-
     songs.forEach((song) => {
 
-        song.audio.volume =
-            volume;
+        song.audio.volume = volume;
 
     });
 
@@ -434,7 +362,6 @@ function updatePlaylist() {
         playlistItems.querySelectorAll(
             ".playlist-item"
         );
-
 
     items.forEach((item, index) => {
 
@@ -470,9 +397,7 @@ playlistSongItems.forEach((item) => {
         () => {
 
             const selectedSong =
-                Number(
-                    item.dataset.song
-                ) - 1;
+                Number(item.dataset.song) - 1;
 
 
             if (
@@ -480,9 +405,7 @@ playlistSongItems.forEach((item) => {
                 selectedSong < songs.length
             ) {
 
-                songIndex =
-                    selectedSong;
-
+                songIndex = selectedSong;
 
                 loadSong(songIndex);
 
@@ -506,32 +429,25 @@ songs.forEach((song) => {
         "ended",
         () => {
 
-            if (
-                song.audio !== audioPlayer
-            ) {
+            if (song.audio !== audioPlayer) {
 
                 return;
 
             }
 
 
-            if (
-                autoplayToggle.checked
-            ) {
+            if (autoplayToggle.checked) {
 
                 nextSong();
 
             } else {
 
-                playBtn.textContent =
-                    "▶";
-
+                playBtn.textContent = "▶";
 
                 playBtn.setAttribute(
                     "aria-label",
                     "Play"
                 );
-
 
                 musicPlayer.classList.remove(
                     "playing"
@@ -555,9 +471,7 @@ songs.forEach((song) => {
         "timeupdate",
         () => {
 
-            if (
-                song.audio === audioPlayer
-            ) {
+            if (song.audio === audioPlayer) {
 
                 updateProgress();
 
@@ -579,9 +493,7 @@ songs.forEach((song) => {
         "loadedmetadata",
         () => {
 
-            if (
-                song.audio === audioPlayer
-            ) {
+            if (song.audio === audioPlayer) {
 
                 setDuration();
 
@@ -652,7 +564,6 @@ document.addEventListener(
     (event) => {
 
         // Space = Play / Pause
-
         if (event.code === "Space") {
 
             event.preventDefault();
@@ -663,10 +574,7 @@ document.addEventListener(
 
 
         // Right Arrow = Next
-
-        else if (
-            event.key === "ArrowRight"
-        ) {
+        else if (event.key === "ArrowRight") {
 
             nextSong();
 
@@ -674,10 +582,7 @@ document.addEventListener(
 
 
         // Left Arrow = Previous
-
-        else if (
-            event.key === "ArrowLeft"
-        ) {
+        else if (event.key === "ArrowLeft") {
 
             previousSong();
 
@@ -685,22 +590,15 @@ document.addEventListener(
 
 
         // Up Arrow = Increase Volume
-
-        else if (
-            event.key === "ArrowUp"
-        ) {
+        else if (event.key === "ArrowUp") {
 
             event.preventDefault();
-
 
             volumeBar.value =
                 Math.min(
                     1,
-                    Number(
-                        volumeBar.value
-                    ) + 0.1
+                    Number(volumeBar.value) + 0.1
                 );
-
 
             changeVolume();
 
@@ -708,22 +606,15 @@ document.addEventListener(
 
 
         // Down Arrow = Decrease Volume
-
-        else if (
-            event.key === "ArrowDown"
-        ) {
+        else if (event.key === "ArrowDown") {
 
             event.preventDefault();
-
 
             volumeBar.value =
                 Math.max(
                     0,
-                    Number(
-                        volumeBar.value
-                    ) - 0.1
+                    Number(volumeBar.value) - 0.1
                 );
-
 
             changeVolume();
 
@@ -736,6 +627,9 @@ document.addEventListener(
 // ========================================
 // INITIALIZE PLAYER
 // ========================================
+
+// Start with Sunny
+songIndex = 0;
 
 changeVolume();
 
