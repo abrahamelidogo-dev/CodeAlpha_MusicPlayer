@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CodeAlpha Music Player</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- =================================
+         MUSIC PLAYER
+    ================================== -->
+
+    <main class="music-player">
+
+
+        <!-- =================================
+             HEADER
+        ================================== -->
+
+        <header class="player-header">
+
+            <h1>Abraham Eli Music Player</h1>
+
+            <p>Enjoy your favourite music</p>
+
+        </header>
+
+
+        <!-- =================================
+             ALBUM COVER
+        ================================== -->
+
+        <div class="album-container">
+
+            <img
+                id="albumCover"
+                src="cover1.jpeg"
+                alt="Album Cover"
+            >
+
+        </div>
+
+
+        <!-- =================================
+             SONG INFORMATION
+        ================================== -->
+
+        <section class="song-info">
+
+            <h2 id="songTitle">
+                Dreams
+            </h2>
+
+            <p id="artistName">
+                Benjamin Scott
+            </p>
+
+        </section>
+
+
+        <!-- =================================
+             AUDIO ELEMENTS
+             3 SONGS
+        ================================== -->
+
+        <div class="audio-files">
+
+            <!-- SONG 1 -->
+
+            <audio
+                id="audioPlayer1"
+                src="bensound-dreams.mp3"
+            ></audio>
+
+
+            <!-- SONG 2 -->
+
+            <audio
+                id="audioPlayer2"
+                src="bensound-memories.mp3"
+            ></audio>
+
+
+            <!-- SONG 3 -->
+
+            <audio
+                id="audioPlayer3"
+                src="bensound-sunny.mp3"
+            ></audio>
+
+        </div>
+
+
+        <!-- =================================
+             PROGRESS AREA
+        ================================== -->
+
+        <div class="progress-container">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <input
+                type="range"
+                id="progressBar"
+                min="0"
+                max="100"
+                value="0"
+            >
+
+            <span id="duration">
+                0:00
+            </span>
+
+        </div>
+
+
+        <!-- =================================
+             PLAYER CONTROLS
+        ================================== -->
+
+        <div class="controls">
+
+
+            <!-- PREVIOUS -->
+
+            <button
+                id="previousBtn"
+                class="control-btn"
+                aria-label="Previous song"
+            >
+                ⏮
+            </button>
+
+
+            <!-- PLAY / PAUSE -->
+
+            <button
+                id="playBtn"
+                class="control-btn play-btn"
+                aria-label="Play"
+            >
+                ▶
+            </button>
+
+
+            <!-- NEXT -->
+
+            <button
+                id="nextBtn"
+                class="control-btn"
+                aria-label="Next song"
+            >
+                ⏭
+            </button>
+
+        </div>
+
+
+        <!-- =================================
+             VOLUME CONTROL
+        ================================== -->
+
+        <div class="volume-container">
+
+            <span>🔊</span>
+
+            <input
+                type="range"
+                id="volumeBar"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+            >
+
+        </div>
+
+
+        <!-- =================================
+             PLAYLIST
+        ================================== -->
+
+        <section class="playlist">
+
+
+            <div class="playlist-header">
+
+                <h2>Playlist</h2>
+
+            </div>
+
+
+            <div id="playlistItems">
+
+
+                <!-- =================================
+                     SONG 1
+                ================================== -->
+
+                <div
+                    class="playlist-item"
+                    data-song="1"
+                >
+
+                    <img
+                        src="Dreams.jpeg"
+                        alt="Dreams Cover"
+                        class="playlist-cover"
+                    >
+
+                    <div class="playlist-info">
+
+                        <h3>Dreams</h3>
+
+                        <p>Benjamin Scott</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     SONG 2
+                ================================== -->
+
+                <div
+                    class="playlist-item"
+                    data-song="2"
+                >
+
+                    <img
+                        src="memories.jpeg"
+                        alt="Memories Cover"
+                        class="playlist-cover"
+                    >
+
+                    <div class="playlist-info">
+
+                        <h3>Memories</h3>
+
+                        <p>Benjamin Scott</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     SONG 3
+                ================================== -->
+
+                <div
+                    class="playlist-item"
+                    data-song="3"
+                >
+
+                    <img
+                        src="sunny.jpeg"
+                        alt="Sunny Cover"
+                        class="playlist-cover"
+                    >
+
+                    <div class="playlist-info">
+
+                        <h3>Sunny</h3>
+
+                        <p>Benjamin Scott</p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             AUTOPLAY
+        ================================== -->
+
+        <div class="autoplay-container">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="autoplayToggle"
+                >
+
+                Autoplay next song
+
+            </label>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

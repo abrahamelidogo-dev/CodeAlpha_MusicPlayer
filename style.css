@@ -1,0 +1,634 @@
+/* ========================================
+   CODEALPHA MUSIC PLAYER
+   COMPLETE CSS
+======================================== */
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   BODY
+======================================== */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 15px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #312e81,
+            #581c87
+        );
+
+    color: #ffffff;
+}
+
+
+/* ========================================
+   MUSIC PLAYER
+======================================== */
+
+.music-player {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 30px;
+
+    background: rgba(17, 24, 39, 0.92);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* ========================================
+   PLAYER HEADER
+======================================== */
+
+.player-header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.player-header h1 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.player-header p {
+    color: #9ca3af;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   ALBUM COVER
+======================================== */
+
+.album-container {
+    width: 260px;
+    height: 260px;
+
+    margin: 0 auto 25px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.album-container img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.album-container:hover img {
+    transform: scale(1.05);
+}
+
+
+/* ========================================
+   SONG INFORMATION
+======================================== */
+
+.song-info {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.song-info h2 {
+    font-size: 22px;
+
+    margin-bottom: 7px;
+}
+
+.song-info p {
+    color: #9ca3af;
+
+    font-size: 15px;
+}
+
+
+/* ========================================
+   AUDIO FILES
+======================================== */
+
+.audio-files {
+    display: none;
+}
+
+
+/* ========================================
+   PROGRESS AREA
+======================================== */
+
+.progress-container {
+    display: grid;
+
+    grid-template-columns: 40px 1fr 40px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.progress-container span {
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* ========================================
+   RANGE INPUTS
+======================================== */
+
+input[type="range"] {
+    width: 100%;
+
+    height: 5px;
+
+    appearance: none;
+
+    background: #374151;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+/* Chrome / Edge / Safari */
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #a855f7;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+
+/* Firefox */
+
+input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #a855f7;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   PLAYER CONTROLS
+======================================== */
+
+.controls {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-bottom: 25px;
+}
+
+
+.control-btn {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #374151;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.control-btn:hover {
+    transform: scale(1.1);
+
+    background: #4b5563;
+}
+
+
+/* ========================================
+   PLAY BUTTON
+======================================== */
+
+.play-btn {
+    width: 65px;
+    height: 65px;
+
+    background: #a855f7;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(168, 85, 247, 0.35);
+}
+
+
+.play-btn:hover {
+    background: #9333ea;
+
+    transform: scale(1.08);
+}
+
+
+/* ========================================
+   VOLUME
+======================================== */
+
+.volume-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+.volume-container span {
+    font-size: 17px;
+}
+
+#volumeBar {
+    flex: 1;
+}
+
+
+/* ========================================
+   PLAYLIST
+======================================== */
+
+.playlist {
+    margin-top: 10px;
+}
+
+
+.playlist-header {
+    margin-bottom: 12px;
+}
+
+
+.playlist-header h2 {
+    font-size: 18px;
+}
+
+
+/* ========================================
+   PLAYLIST ITEMS
+======================================== */
+
+#playlistItems {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    max-height: 180px;
+
+    overflow-y: auto;
+}
+
+
+.playlist-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: #1f2937;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.playlist-item:hover {
+    background: #374151;
+
+    transform: translateX(4px);
+}
+
+
+/* ========================================
+   ACTIVE SONG
+======================================== */
+
+.playlist-item.active {
+    background: #4c1d95;
+
+    border-left: 4px solid #a855f7;
+}
+
+
+/* ========================================
+   PLAYLIST IMAGE
+======================================== */
+
+.playlist-item img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+
+/* ========================================
+   PLAYLIST INFORMATION
+   MATCHES HTML: .playlist-info
+======================================== */
+
+.playlist-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.playlist-info h3 {
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    margin-bottom: 4px;
+}
+
+
+.playlist-info p {
+    font-size: 12px;
+
+    color: #9ca3af;
+}
+
+
+/* ========================================
+   PLAYLIST PLAY ICON
+======================================== */
+
+.playlist-play-icon {
+    font-size: 15px;
+
+    color: #9ca3af;
+}
+
+
+/* ========================================
+   AUTOPLAY
+======================================== */
+
+.autoplay-container {
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #374151;
+}
+
+
+.autoplay-container label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #d1d5db;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+#autoplayToggle {
+    width: 17px;
+    height: 17px;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   PLAYING ANIMATION
+======================================== */
+
+.music-player.playing .album-container img {
+    animation: albumPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes albumPulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* ========================================
+   PLAYLIST SCROLLBAR
+======================================== */
+
+#playlistItems::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+#playlistItems::-webkit-scrollbar-track {
+    background: #111827;
+
+    border-radius: 10px;
+}
+
+
+#playlistItems::-webkit-scrollbar-thumb {
+    background: #6b7280;
+
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px;
+    }
+
+
+    .music-player {
+        padding: 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .player-header h1 {
+        font-size: 24px;
+    }
+
+
+    .album-container {
+        width: 220px;
+        height: 220px;
+    }
+
+
+    .song-info h2 {
+        font-size: 20px;
+    }
+
+
+    .controls {
+        gap: 18px;
+    }
+
+
+    .control-btn {
+        width: 45px;
+        height: 45px;
+
+        font-size: 18px;
+    }
+
+
+    .play-btn {
+        width: 60px;
+        height: 60px;
+
+        font-size: 22px;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 350px) {
+
+    .music-player {
+        padding: 18px;
+    }
+
+
+    .album-container {
+        width: 190px;
+        height: 190px;
+    }
+
+
+    .progress-container {
+        grid-template-columns: 35px 1fr 35px;
+
+        gap: 6px;
+    }
+
+
+    .controls {
+        gap: 12px;
+    }
+
+}
